@@ -7,6 +7,14 @@ import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/*
+    I have abided by the UNCG Honor Code for this project.
+    Anthony Ratliff
+    This program will create a .csv file containing randomly generated
+    SSN numbers and randomly generated rates of pay from 7.50 to 50.00.
+    The number of elements in the file is calculated by the numElements value.
+*/
+
 public class TupleGen{
     public static void main(String[] args) {
         int numElements = 2000;

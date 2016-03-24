@@ -1,14 +1,20 @@
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class TupleGen{
     public static void main(String[] args) {
-        int numElements = 20;
+        int numElements = 2000;
         String[][] array = populateArray(new String[numElements][2]);
-        for (int i=0;i<numElements;i++){
-            System.out.println(array[i][0] + "\t" + array[i][1]);
+        if(createFile(array)){
+            System.out.println("The file was created.");
+        } else {
+            System.out.println("The file was not created.");
         }
     }
     
@@ -41,6 +47,20 @@ public class TupleGen{
     }
     
     public static boolean createFile(String[][] temp){
-        return false;
+        boolean success = false;
+        try {
+            try (PrintWriter writer = new PrintWriter("projectPart4.csv")) {
+                for (String[] temp1 : temp) {
+                    writer.println(temp1[0] + "," + temp1[1]);
+                }
+            }
+            success = true;
+        } catch (IOException ex) {
+            Logger.getLogger(TupleGen.class.getName()).log(Level.SEVERE, null, ex);
+            return success;       
+        }
+        
+        
+        return success;
     }
 }

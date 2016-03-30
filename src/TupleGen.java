@@ -19,11 +19,13 @@ public class TupleGen{
     public static void main(String[] args) {
         int numElements = 2000;
         String[][] array = populateArray(new String[numElements][2]);
+        randomChars(1);
+        /*
         if(createFile(array)){
             System.out.println("The file was created.");
         } else {
             System.out.println("The file was not created.");
-        }
+        }*/
     }
     
     public static String[][] populateArray(String[][] temp){
@@ -50,6 +52,15 @@ public class TupleGen{
         Random rand = new Random();
         for (int i=0;i<9;i++){
             temp+= String.valueOf(rand.nextInt(10));
+        }
+        return temp;
+    }
+    
+    public static String randomChars(int num){
+        String temp = "";
+        Random rand = new Random();
+        for (int i=0;i<num;i++){
+            System.out.println(String.valueOf(Character.toChars(rand.nextInt(25) + 97)));
         }
         return temp;
     }
